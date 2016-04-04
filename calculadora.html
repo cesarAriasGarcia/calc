@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CORE2016 P3</title>
+    <link href="normal.css" rel="stylesheet" type="text/css" media="only screen and (min-device-width: 481px)">
+    <link href="movil.css" rel="stylesheet" type="text/css" media="(max-device-width:480px)">
+    <script type="text/javascript" src="zepto.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    
+    $(function() {
+      
+      $("#pantalla").on("click", 
+        function(){ $("#pantalla").val("");
+        }
+      );
+      
+      $("#suma").on("click", 
+        function() {
+          $("#pantalla").val($("#pantalla").val() + ' + ')
+          $("#pantalla").focus()
+        }
+      );
+      
+      $("#resta").on("click", 
+        function() {
+          $("#pantalla").val($("#pantalla").val() + ' - ')
+          $("#pantalla").focus()
+        }
+      );
+      
+      $("#cuadrado").on("click", 
+        function() {
+          try{
+            var num = $("#pantalla");
+            num.val(num.val() * num.val());
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+      );
+      
+      $("#inverso").on("click", 
+        function() {
+          try{
+            var num = $("#pantalla");
+            num.val(1/(num.val()));
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+      );
+      
+      $("#raiz").on("click", 
+        function() {
+          try{
+            var num = $("#pantalla");
+            num.val(Math.sqrt(num.val()));
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+      );
+      
+      $("#pentera").on("click", 
+        function() {
+          try{
+            var num = $("#pantalla").val();
+            if(!isNaN(num)){
+              $("#pantalla").val(Math.round(num));
+            } else {$("#pantalla").val("ERROR");}
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+      );
+      
+      $("#potencia2").on("click", 
+        function() {
+          try {
+            var num = $("#pantalla");
+            num.val(Math.pow(2,num.val()));
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+      );
+      
+      $("#factorial").on("click", 
+        function() {
+          try {
+            var num = $("#pantalla");
+            x = factorial(num.val());
+            num.val(x);
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+      );
+      
+      $("#igual").on("click", 
+        function() {
+          try {
+            var result = eval($("#pantalla").val());
+            $("#pantalla").val(result);
+          } catch (e) {
+            $("#pantalla").val("ERROR");
+          }
+        }
+          
+      );
+      
+      $("#limpiar").on("click", 
+        function() {
+          $("#pantalla").val("");
+          $("#pantalla").focus()
+        }
+      );
+      
+      function factorial (n) {
+        if (n == 0 || n == 1)
+          return 1;
+        return factorial(n-1) * n;
+      };
+    });
+
+    </script>
+  </head>
+  <body>
+    <header><h1>Bienvenido a la calculadora de Daniel Guerra (d.guerrab@alumnos.upm.es)</h1></header>
+
+<div id='main'>
+  <b>Número: </b><input type=text id="pantalla" size="32">
+  <p><button id="suma"> + </button>
+  <button id="resta"> - </button>
+  <button id="cuadrado"> x<sup>2</sup> </button>
+  <button id="inverso"> 1/x </button>
+  <button id="raiz"> sqrt(x) </button>
+  <button id="pentera"> parte entera(x) </button>
+  <button id="potencia2"> 2<sup>x</sup> </button>
+  <button id="factorial"> x! </button>
+  <button id="igual"> = </button>
+  <button id="limpiar"> Limpiar </button>
+  <div style="color:white" id="result"></div>
+
+</div>
+  </body>
+</html>
