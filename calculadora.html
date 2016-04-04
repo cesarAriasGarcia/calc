@@ -104,6 +104,7 @@
           try {
             var result = eval($("#pantalla").val());
             $("#pantalla").val(result);
+            $("#pantalla").focus()
           } catch (e) {
             $("#pantalla").val("ERROR");
           }
